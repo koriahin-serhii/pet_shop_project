@@ -1,0 +1,147 @@
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 128px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 70px;
+  width: auto;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover img {
+  transform: scale(1.05);
+}
+
+.navigation {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.navLink {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.navLink:hover {
+  color: #0D50FF;
+  background-color: #f0f8ff;
+}
+
+.navLink.active {
+  color: #0D50FF;
+  /* font-weight: 600; */
+}
+
+.cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  background-color: transparent;
+}
+
+.cart:hover {
+  background-color: #f0f8ff;
+  transform: scale(1.05);
+}
+
+.cartIcon {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) saturate(100%) invert(20%) sepia(13%) saturate(469%) hue-rotate(165deg) brightness(92%) contrast(87%);
+}
+
+.cart:hover .cartIcon {
+  filter: brightness(0) saturate(100%) invert(26%) sepia(100%) saturate(3285%) hue-rotate(211deg) brightness(94%) contrast(101%);
+}
+
+.cartCount {
+  position: absolute;
+  top: 18px;
+  left: 8px;
+  background-color: #0D50FF;
+  color: white;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+    height: 70px;
+  }
+  
+  .navigation {
+    gap: 20px;
+  }
+  
+  .navLink {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  .cartIcon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .cartCount {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    top: 5px;
+    right: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation {
+    gap: 10px;
+  }
+  
+  .navLink {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+}
