@@ -1,0 +1,68 @@
+.button {
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  height: 58px;
+  padding: 0 24px;
+  font-size: 20px;
+  background-color: #0d50ff;
+  color: white;
+  box-shadow: 0 4px 8px rgba(13, 80, 255, 0.2);
+}
+
+.button:hover:not(.disabled) {
+  background-color: #0a42cc;
+  box-shadow: 0 6px 12px rgba(13, 80, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.button:active:not(.disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(13, 80, 255, 0.2);
+}
+
+.button.fullWidth {
+  width: 100%;
+}
+
+/* Отключенное состояние */
+.button.disabled {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.button.disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .button {
+    height: 52px;
+    font-size: 15px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    height: 48px;
+    font-size: 14px;
+    padding: 0 18px;
+    border-radius: 8px;
+  }
+}

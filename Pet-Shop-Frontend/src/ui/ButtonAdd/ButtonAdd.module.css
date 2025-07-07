@@ -1,0 +1,62 @@
+.button {
+  width: 100%;
+  max-width: 496px;
+  height: 58px;
+  border: none;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #0d50ff;
+  color: white;
+  box-shadow: 0 4px 8px rgba(13, 80, 255, 0.2);
+}
+
+.button:hover {
+  background-color: #282828;
+  box-shadow: 0 6px 12px rgba(13, 80, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(13, 80, 255, 0.2);
+}
+
+.button.added {
+  background-color: white;
+  color: #282828;
+  border: 1px solid #282828;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: default;
+}
+
+.button.added:hover {
+  background-color: white;
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .button {
+    height: 50px;
+    font-size: 16px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    height: 45px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+}
