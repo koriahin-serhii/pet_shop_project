@@ -1,41 +1,12 @@
 .homePage {
   min-height: 100vh;
-}
-
-.content {
-  padding: 60px 20px;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  text-align: center;
-}
-
-.content h2 {
-  color: #333;
-  margin-bottom: 20px;
-  font-size: 2.5rem;
-  font-weight: 700;
-}
-
-.content p {
-  color: #666;
-  margin-bottom: 30px;
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
 }
 
 /* Adaptability */
 @media (max-width: 768px) {
-  .content {
-    padding: 40px 15px;
-  }
-  
-  .content h2 {
-    font-size: 2rem;
-  }
-  
-  .content p {
-    font-size: 1rem;
-  }
 }

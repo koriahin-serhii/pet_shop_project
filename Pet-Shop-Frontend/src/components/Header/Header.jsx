@@ -41,14 +41,14 @@ const Header = () => {
             Categories
           </Link>
           <Link 
-            to={ROUTES.PRODUCTS} 
-            className={`${styles.navLink} ${isActiveLink(ROUTES.PRODUCTS) ? styles.active : ''}`}
+            to={ROUTES.ALL_PRODUCTS} 
+            className={`${styles.navLink} ${isActiveLink(ROUTES.ALL_PRODUCTS) ? styles.active : ''}`}
           >
             All products
           </Link>
           <Link 
-            to={ROUTES.SALES} 
-            className={`${styles.navLink} ${isActiveLink(ROUTES.SALES) ? styles.active : ''}`}
+            to={ROUTES.ALL_SALES} 
+            className={`${styles.navLink} ${isActiveLink(ROUTES.ALL_SALES) ? styles.active : ''}`}
           >
             All sales
           </Link>

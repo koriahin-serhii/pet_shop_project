@@ -8,7 +8,7 @@ const PromoAction = () => {
   const navigate = useNavigate()
 
   const handleCheckOutClick = () => {
-    navigate(ROUTES.SALES)
+    navigate(ROUTES.ALL_SALES)
   }
 
   return (

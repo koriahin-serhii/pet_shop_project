@@ -18,9 +18,9 @@ function App() {
         <Routes>
           <Route path={ROUTES.MAIN} element={<HomePage />} />
           <Route path={ROUTES.CATEGORIES} element={<CategoriesPage />} />
-          <Route path={ROUTES.PRODUCTS} element={<AllProductsPage />} />
-          <Route path={ROUTES.SALES} element={<AllSalesPage />} />
-          <Route path={ROUTES.SHOPPING} element={<ShoppingCartPage />} />
+          <Route path={ROUTES.ALL_PRODUCTS} element={<AllProductsPage />} />
+          <Route path={ROUTES.ALL_SALES} element={<AllSalesPage />} />
+          <Route path={ROUTES.SHOPPING_CART} element={<ShoppingCartPage />} />
           <Route
             path={`${ROUTES.CATEGORIES}/:categoryID`}
             element={<CategoryProductsPage />}
