@@ -1,0 +1,57 @@
+.quickCounter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.addButton {
+  padding: 12px 24px;
+  background-color: #0D50FF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.addButton:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.addButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.addButton:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.addButton:disabled:hover {
+  background-color: #6c757d;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .quickCounter {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .addButton {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
