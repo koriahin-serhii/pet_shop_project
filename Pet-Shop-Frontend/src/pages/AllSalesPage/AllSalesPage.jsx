@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { ProductCard } from '../../ui'
 import {
   fetchSaleProducts,
   selectSaleProducts,
@@ -49,19 +50,14 @@ const AllSalesPage = () => {
             <p>No sale products found.</p>
           ) : (
             saleProducts.map((product) => (
-              <div key={product.id} className={styles.productCard}>
-                <h3>{product.title}</h3>
-                <p>Original Price: ${product.price}</p>
-                <p>Sale Price: ${product.discont_price}</p>
-                <p>
-                  Discount:{' '}
-                  {Math.round(
-                    (1 - product.discont_price / product.price) * 100
-                  )}
-                  %
-                </p>
-                {/* Здесь будет использоваться ProductCard компонент */}
-              </div>
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                title={product.title}
+                price={product.price}
+                discont_price={product.discont_price}
+                image={product.image}
+              />
             ))
           )}
         </div>
