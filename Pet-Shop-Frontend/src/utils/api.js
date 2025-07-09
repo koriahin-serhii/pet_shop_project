@@ -48,8 +48,17 @@ export const productsAPI = {
   // Получить товары по категории
   getByCategory: (categoryId) => api.get(`/categories/${categoryId}`),
   
-  // Получить товары со скидкой
-  getSales: () => api.get('/products/sale'),
+  // Получить товары со скидкой (фильтруем все товары)
+  getSales: async () => {
+    const response = await api.get('/products/all')
+    // Фильтруем товары, у которых есть discont_price
+    const saleProducts = response.data.filter(product => 
+      product.discont_price !== null && 
+      product.discont_price !== undefined && 
+      product.discont_price < product.price
+    )
+    return { ...response, data: saleProducts }
+  },
 }
 
 export default api

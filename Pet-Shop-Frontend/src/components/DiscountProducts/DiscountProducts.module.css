@@ -1,4 +1,5 @@
 .container {
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
 }
@@ -17,7 +18,7 @@
   line-height: 1.2;
 }
 
-.allCategoriesLink {
+.allSalesLink {
   font-size: 16px;
   font-weight: 500;
   color: #8b8b8b;
@@ -26,11 +27,11 @@
   position: relative;
 }
 
-.allCategoriesLink:hover {
+.allSalesLink:hover {
   color: #0d50ff;
 }
 
-.allCategoriesLink::after {
+.allSalesLink::after {
   content: '';
   position: absolute;
   bottom: -2px;
@@ -41,21 +42,24 @@
   transition: width 0.3s ease;
 }
 
-.allCategoriesLink:hover::after {
+.allSalesLink:hover::after {
   width: 100%;
 }
 
-.categoriesGrid {
+.productsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 32px;
 }
 
 .loading,
 .error {
   text-align: center;
-  padding: 60px 20px;
+  padding: 40px;
   font-size: 18px;
+}
+
+.loading {
   color: #666;
 }
 
@@ -64,25 +68,43 @@
   background-color: #f8d7da;
   border: 1px solid #f5c2c7;
   border-radius: 8px;
-  margin: 20px 0;
+}
+
+.noProducts {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
 }
 
 /* Adaptability */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 30px;
+  }
+
+  .productsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 0 20px;
+  }
+
   .title {
     font-size: 48px;
   }
 
-  .categoriesGrid {
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 15px;
-  }
-
+@media (max-width: 600px) {
   .header {
     flex-direction: column;
     align-items: flex-start;
@@ -94,27 +116,18 @@
     font-size: 36px;
   }
 
-  .allCategoriesLink {
-    font-size: 18px;
-  }
-
-  .categoriesGrid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  .productsGrid {
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
   .title {
     font-size: 28px;
-  }
-
-  .allCategoriesLink {
-    font-size: 16px;
-  }
-
-  .categoriesGrid {
-    grid-template-columns: 1fr;
-    gap: 16px;
   }
 }

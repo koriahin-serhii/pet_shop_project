@@ -1,5 +1,5 @@
 .homePage {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
@@ -8,5 +8,20 @@
 }
 
 /* Adaptability */
+@media (max-width: 1024px) {
+  .homePage {
+    gap: 60px;
+  }
+}
+
 @media (max-width: 768px) {
+  .homePage {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .homePage {
+    gap: 20px;
+  }
 }

@@ -23,7 +23,7 @@ const AllSalesPage = () => {
     return (
       <div className={styles.allSalesPage}>
         <div className={styles.container}>
-          <h1>All Sales</h1>
+          <h1>Discounted items</h1>
           <div className={styles.loading}>Loading sale products...</div>
         </div>
       </div>
@@ -34,7 +34,7 @@ const AllSalesPage = () => {
     return (
       <div className={styles.allSalesPage}>
         <div className={styles.container}>
-          <h1>All Sales</h1>
+          <h1>Discounted items</h1>
           <div className={styles.error}>Error: {error}</div>
         </div>
       </div>
@@ -44,7 +44,7 @@ const AllSalesPage = () => {
   return (
     <div className={styles.allSalesPage}>
       <div className={styles.container}>
-        <h1>All Sales</h1>
+        <h1>Discounted items</h1>
         <div className={styles.productsGrid}>
           {saleProducts.length === 0 ? (
             <p>No sale products found.</p>

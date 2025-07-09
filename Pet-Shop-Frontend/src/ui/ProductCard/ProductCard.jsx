@@ -19,7 +19,15 @@ const ProductCard = ({
   }
 
   const discountPercent = calculateDiscountPercent()
-  const imageUrl = image ? getImageUrl(image) : 'https://via.placeholder.com/300x200/F5F5F5/999999?text=No+Image'
+  
+  // Обработка URL изображения
+  const getImageSrc = () => {
+    if (!image) return 'https://via.placeholder.com/300x200/F5F5F5/999999?text=No+Image'
+    if (image.startsWith('http')) return image // Если уже полный URL
+    return getImageUrl(image) // Иначе используем утилиту API
+  }
+  
+  const imageUrl = getImageSrc()
 
   const cardContent = (
     <div className={`${styles.card} ${className || ''}`}>
