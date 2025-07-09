@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ProductCard } from '../../ui'
+import { ProductCard, SortingComponent } from '../../ui'
 import { 
   fetchProducts, 
   selectProducts, 
@@ -14,10 +14,20 @@ const AllProductsPage = () => {
   const products = useSelector(selectProducts)
   const loading = useSelector(selectProductsLoading)
   const error = useSelector(selectProductsError)
+  const [filteredProducts, setFilteredProducts] = useState([])
 
   useEffect(() => {
     dispatch(fetchProducts())
   }, [dispatch])
+
+  // Обновляем отфильтрованные товары при загрузке
+  useEffect(() => {
+    setFilteredProducts(products)
+  }, [products])
+
+  const handleFilteredProductsChange = (filtered) => {
+    setFilteredProducts(filtered)
+  }
 
   if (loading) {
     return (
@@ -45,11 +55,21 @@ const AllProductsPage = () => {
     <div className={styles.allProductsPage}>
       <div className={styles.container}>
         <h1>All Products</h1>
+        
+        {/* Компонент сортировки и фильтрации */}
+        {products.length > 0 && (
+          <SortingComponent
+            products={products}
+            onFilteredProductsChange={handleFilteredProductsChange}
+            showDiscountFilter={true}
+          />
+        )}
+        
         <div className={styles.productsGrid}>
-          {products.length === 0 ? (
+          {filteredProducts.length === 0 ? (
             <p>No products found.</p>
           ) : (
-            products.map(product => (
+            filteredProducts.map(product => (
               <ProductCard
                 key={product.id}
                 id={product.id}

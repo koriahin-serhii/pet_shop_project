@@ -3,3 +3,4 @@ export { default as ButtonGetDiscount } from './ButtonGetDiscount/ButtonGetDisco
 export { default as CustomButton } from './CustomButton/CustomButton'
 export { default as CategoriesCard } from './CategoriesCard/CategoriesCard'
 export { default as ProductCard } from './ProductCard/ProductCard'
+export { default as SortingComponent } from './SortingComponent/SortingComponent'

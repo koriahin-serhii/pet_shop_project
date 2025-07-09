@@ -31,7 +31,11 @@ export const fetchProductsByCategory = createAsyncThunk(
   async (categoryId, { rejectWithValue }) => {
     try {
       const response = await productsAPI.getByCategory(categoryId)
-      return response.data
+      // API возвращает объект с полями category и data
+      return {
+        category: response.data.category,
+        products: response.data.data || []
+      }
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Failed to fetch products by category')
     }
@@ -56,6 +60,7 @@ const productsSlice = createSlice({
     items: [],
     currentProduct: null,
     categoryProducts: [],
+    currentCategory: null,
     saleProducts: [],
     loading: false,
     error: null,
@@ -70,6 +75,7 @@ const productsSlice = createSlice({
     },
     clearCategoryProducts: (state) => {
       state.categoryProducts = []
+      state.currentCategory = null
     }
   },
   extraReducers: (builder) => {
@@ -110,7 +116,8 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
         state.loading = false
-        state.categoryProducts = action.payload
+        state.categoryProducts = action.payload.products
+        state.currentCategory = action.payload.category
       })
       .addCase(fetchProductsByCategory.rejected, (state, action) => {
         state.loading = false
@@ -139,6 +146,7 @@ export const { clearError, clearCurrentProduct, clearCategoryProducts } = produc
 export const selectProducts = (state) => state.products.items
 export const selectCurrentProduct = (state) => state.products.currentProduct
 export const selectCategoryProducts = (state) => state.products.categoryProducts
+export const selectCurrentCategory = (state) => state.products.currentCategory
 export const selectSaleProducts = (state) => state.products.saleProducts
 export const selectProductsLoading = (state) => state.products.loading
 export const selectProductsError = (state) => state.products.error
