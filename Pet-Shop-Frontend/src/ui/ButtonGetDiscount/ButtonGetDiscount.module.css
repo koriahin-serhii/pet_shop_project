@@ -14,7 +14,6 @@
   align-items: center;
   justify-content: center;
   background-color: white;
-  color: #282828;
 }
 
 .button:hover {
@@ -34,6 +33,44 @@
   color: #0d50ff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: default;
+}
+
+.button.loading {
+  background-color: #9CA3AF;
+  color: white;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.button.loading::after {
+  content: '';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+.button.disabled {
+  background-color: #E5E7EB;
+  color: #9CA3AF;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.button.disabled:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 /* Адаптивность */

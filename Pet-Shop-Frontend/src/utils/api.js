@@ -52,4 +52,10 @@ export const productsAPI = {
   getSales: () => api.get('/products/sale'),
 }
 
+// API методы для скидок/купонов
+export const discountAPI = {
+  // Отправить заявку на купон
+  sendDiscountRequest: (data) => api.post('/sale/send', data),
+}
+
 export default api

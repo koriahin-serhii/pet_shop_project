@@ -4,12 +4,14 @@ import styles from './ButtonGetDiscount.module.css'
 const ButtonGetDiscount = ({ 
   onClick, 
   isSubmitted = false, 
+  loading = false,
   disabled = false, 
   className = '',
+  type = 'button',
   children = 'Get a discount'
 }) => {
   const handleClick = () => {
-    if (!disabled && !isSubmitted && onClick) {
+    if (!disabled && !isSubmitted && !loading && onClick) {
       onClick()
     }
   }
@@ -19,6 +21,8 @@ const ButtonGetDiscount = ({
     
     if (isSubmitted) {
       classes.push(styles.submitted)
+    } else if (loading) {
+      classes.push(styles.loading)
     } else if (disabled) {
       classes.push(styles.disabled)
     }
@@ -30,14 +34,20 @@ const ButtonGetDiscount = ({
     return classes.join(' ')
   }
 
+  const getButtonText = () => {
+    if (loading) return 'Sending...'
+    if (isSubmitted) return 'Request Submitted'
+    return children
+  }
+
   return (
     <button 
       className={getButtonClass()}
       onClick={handleClick}
-      disabled={disabled || isSubmitted}
-      type="button"
+      disabled={disabled || isSubmitted || loading}
+      type={type}
     >
-      {isSubmitted ? 'Request Submitted' : children}
+      {getButtonText()}
     </button>
   )
 }
