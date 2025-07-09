@@ -41,7 +41,7 @@
   gap: 30px;
 }
 
-/* Адаптивность */
+/* Adaptability */
 @media (max-width: 1024px) {
     .container h1 {
       font-size: 48px;
