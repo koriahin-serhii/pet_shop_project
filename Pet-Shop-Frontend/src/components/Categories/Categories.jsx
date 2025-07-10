@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { CategoriesCard } from '../../ui'
+import { CategoriesCard, SectionHeader } from '../../ui'
 import { ROUTES } from '../../utils/routes'
 import { getImageUrl } from '../../utils/api'
 import { 
@@ -31,9 +30,7 @@ const Categories = ({ showAll = false, limit = 4 }) => {
     return (
       <section className={styles.categoriesSection}>
         <div className={styles.container}>
-          <div className={styles.header}>
-            <h2 className={styles.title}>Categories</h2>
-          </div>
+          <SectionHeader title="Categories" />
           <div className={styles.loading}>Loading categories...</div>
         </div>
       </section>
@@ -44,9 +41,7 @@ const Categories = ({ showAll = false, limit = 4 }) => {
     return (
       <section className={styles.categoriesSection}>
         <div className={styles.container}>
-          <div className={styles.header}>
-            <h2 className={styles.title}>Categories</h2>
-          </div>
+          <SectionHeader title="Categories" />
           <div className={styles.error}>Error loading categories: {error}</div>
         </div>
       </section>
@@ -58,14 +53,11 @@ const Categories = ({ showAll = false, limit = 4 }) => {
   return (
     <section className={styles.categoriesSection}>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>Categories</h2>
-          {!showAll && categories.length > limit && (
-            <Link to={ROUTES.CATEGORIES} className={styles.allCategoriesLink}>
-              All categories
-            </Link>
-          )}
-        </div>
+        <SectionHeader 
+          title="Categories" 
+          linkText={!showAll && categories.length > limit ? "All categories" : null}
+          linkTo={!showAll && categories.length > limit ? ROUTES.CATEGORIES : null}
+        />
         
         <div className={styles.categoriesGrid}>
           {displayedCategories.map(category => (

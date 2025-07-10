@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { ProductCard } from '../../ui'
+import { ProductCard, SectionHeader } from '../../ui'
 import { ROUTES } from '../../utils/routes'
 import { 
   fetchSaleProducts, 
@@ -68,9 +67,7 @@ const DiscountProducts = ({ limit = 4 }) => {
     return (
       <section className={styles.discountProductsSection}>
         <div className={styles.container}>
-          <div className={styles.header}>
-            <h2 className={styles.title}>Sale</h2>
-          </div>
+          <SectionHeader title="Sale" />
           <div className={styles.loading}>Loading sale products...</div>
         </div>
       </section>
@@ -81,9 +78,7 @@ const DiscountProducts = ({ limit = 4 }) => {
     return (
       <section className={styles.discountProductsSection}>
         <div className={styles.container}>
-          <div className={styles.header}>
-            <h2 className={styles.title}>Sale</h2>
-          </div>
+          <SectionHeader title="Sale" />
           <div className={styles.error}>Error loading sale products: {error}</div>
         </div>
       </section>
@@ -94,9 +89,7 @@ const DiscountProducts = ({ limit = 4 }) => {
     return (
       <section className={styles.discountProductsSection}>
         <div className={styles.container}>
-          <div className={styles.header}>
-            <h2 className={styles.title}>Sale</h2>
-          </div>
+          <SectionHeader title="Sale" />
           <div className={styles.noProducts}>No sale products available</div>
         </div>
       </section>
@@ -106,12 +99,11 @@ const DiscountProducts = ({ limit = 4 }) => {
   return (
     <section className={styles.discountProductsSection}>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>Sale</h2>
-          <Link to={ROUTES.ALL_SALES} className={styles.allSalesLink}>
-            All sales
-          </Link>
-        </div>
+        <SectionHeader 
+          title="Sale" 
+          linkText="All sales"
+          linkTo={ROUTES.ALL_SALES}
+        />
         
         <div className={styles.productsGrid}>
           {displayedProducts.map(product => (

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import CartItem from '../../components/CartItem/CartItem'
 import CartForm from '../../components/CartForm/CartForm'
-import { OrderSuccessModal, CustomButton } from '../../ui'
+import { OrderSuccessModal, CustomButton, SectionHeader } from '../../ui'
 import {
   selectCartItems,
   selectCartTotalCount,
@@ -52,13 +52,11 @@ const ShoppingCartPage = () => {
   return (
     <section className={styles.cartSection}>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>Shopping cart</h2>
-
-          <Link to={ROUTES.MAIN} className={styles.mainLink}>
-            All categories
-          </Link>
-        </div>
+        <SectionHeader 
+          title="Shopping cart" 
+          linkText="Back to the store"
+          linkTo={ROUTES.MAIN}
+        />
 
         {/* Если корзина пуста */}
         {totalCount === 0 ? (

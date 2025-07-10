@@ -7,3 +7,4 @@ export { default as SortingComponent } from './SortingComponent/SortingComponent
 export { default as Counter } from './Counter/Counter'
 export { default as Modal } from './Modal/Modal'
 export { default as OrderSuccessModal } from './OrderSuccessModal/OrderSuccessModal'
+export { default as SectionHeader } from './SectionHeader/SectionHeader'
