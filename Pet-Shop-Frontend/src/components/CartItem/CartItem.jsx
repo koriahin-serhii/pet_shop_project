@@ -1,32 +1,33 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Counter } from '../../ui'
 import { getImageUrl } from '../../utils/api'
+import { updateQuantity, removeFromCart } from '../../redux/Slices/cartSlice'
 import styles from './CartItem.module.css'
 
-const CartItem = ({
-  id,
-  title,
-  price,
-  discont_price,
-  image,
-  quantity,
-  onQuantityChange,
-  onRemove,
-  className = '',
-}) => {
+const CartItem = ({ item, className = '' }) => {
+  const dispatch = useDispatch()
+  
+  if (!item || !item.productData) {
+    return (
+      <div className={styles.cartItem}>
+        <div>No product data available</div>
+      </div>
+    )
+  }
+
+  const { productData, quantity, id } = item
+  const { title, price, discont_price, image } = productData
+  
   const hasDiscount = discont_price !== null && discont_price < price
   const currentPrice = hasDiscount ? discont_price : price
 
   const handleQuantityChange = (newQuantity) => {
-    if (onQuantityChange) {
-      onQuantityChange(id, newQuantity)
-    }
+    dispatch(updateQuantity({ id, quantity: newQuantity }))
   }
 
   const handleRemove = () => {
-    if (onRemove) {
-      onRemove(id)
-    }
+    dispatch(removeFromCart(id))
   }
 
   return (

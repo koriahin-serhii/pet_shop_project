@@ -10,17 +10,17 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
-      const { productId, quantity = 1 } = action.payload;
+      const { productId, quantity = 1, productData } = action.payload;
       const existingItem = state.items.find(item => item.id === productId);
       
       if (existingItem) {
         existingItem.quantity += quantity;
       } else {
-        // Если товара нет в корзине, добавляем его с переданным количеством
+        // Если товара нет в корзине, добавляем его с переданным количеством и данными
         state.items.push({ 
           id: productId, 
           quantity: quantity,
-          // Здесь можно добавить другие поля товара если нужно
+          productData: productData || null, // Сохраняем данные о товаре
         });
       }
       
@@ -55,5 +55,17 @@ export const selectCartItems = (state) => state.cart.items;
 export const selectCartTotalCount = (state) => state.cart.totalCount;
 export const selectCartItemById = (id) => (state) => 
   state.cart.items.find(item => item.id === id);
+
+// Селектор для расчета общей суммы корзины
+export const selectCartTotal = (state) => {
+  return state.cart.items.reduce((total, item) => {
+    const productData = item.productData;
+    if (!productData) return total;
+    
+    // Если есть скидка, используем цену со скидкой
+    const price = productData.discont_price || productData.price;
+    return total + (price * item.quantity);
+  }, 0);
+};
 
 export default cartSlice.reducer;

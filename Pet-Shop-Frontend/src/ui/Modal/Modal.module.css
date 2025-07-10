@@ -1,0 +1,77 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: transparent;
+  border-radius: 8px;
+  max-width: 550px;
+  width: 100%;
+  max-height: 250px;
+  overflow: visible;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
+  padding: 4px;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+  font-weight: normal;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  opacity: 0.8;
+}
+
+.content {
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 10px;
+  }
+  
+  .modal {
+    max-width: none;
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .closeButton {
+    top: 6px;
+    right: 6px;
+    font-size: 18px;
+  }
+  
+  .content {
+    padding: 0;
+  }
+}

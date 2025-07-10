@@ -25,7 +25,11 @@ const ProductPage = () => {
   }, [dispatch, id])
 
   const handleAddToCart = (productId, quantity) => {
-    dispatch(addToCart({ productId, quantity }))
+    dispatch(addToCart({ 
+      productId, 
+      quantity, 
+      productData: product // Передаем данные о товаре
+    }))
     
     // Показываем улучшенное уведомление
     const productName = product?.title || `Product ${productId}`

@@ -52,16 +52,69 @@
   width: 100%;
 }
 
-/* Adaptability */
+/* Empty cart styles */
+.emptyCart {
+  text-align: left;
+  margin-top: 40px;
+}
+
+.emptyMessage {
+  font-size: 20px;
+  margin: 0 0 32px 0;
+  line-height: 1.4;
+}
+
+/* Cart content styles */
+.cartContent {
+  display: grid;
+  grid-template-columns: 1fr minmax(400px, 500px);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+  margin-top: 40px;
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0; /* Позволяет элементам сжиматься */
+}
+
+.cartSidebar {
+  position: sticky;
+  top: 130px;
+  min-width: 0; /* Позволяет элементам сжиматься */
+}
+
+/* Responsive design for cart content */
+@media (max-width: 1200px) {
+  .cartContent {
+    grid-template-columns: 1fr minmax(350px, 420px);
+    gap: clamp(20px, 3vw, 32px);
+  }
+}
+
 @media (max-width: 1024px) {
   .title {
     font-size: 48px;
+  }
+
+  .cartContent {
+    grid-template-columns: 1fr minmax(320px, 380px);
+    gap: clamp(16px, 2.5vw, 30px);
+  }
+}
+
+@media (max-width: 900px) {
+  .cartContent {
+    grid-template-columns: 1fr minmax(300px, 350px);
+    gap: clamp(16px, 2vw, 24px);
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 15px;
+    padding: 0 clamp(15px, 4vw, 40px);
   }
 
   .header {
@@ -72,20 +125,58 @@
   }
 
   .title {
-    font-size: 36px;
+    font-size: clamp(28px, 6vw, 36px);
   }
 
   .mainLink {
     font-size: 18px;
   }
+
+  .cartContent {
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 4vw, 32px);
+    margin-top: 30px;
+  }
+  
+  .cartSidebar {
+    position: static;
+    order: -1;
+  }
+  
+  .emptyMessage {
+    font-size: clamp(16px, 3.5vw, 18px);
+  }
+
+  .cartItems {
+    gap: clamp(16px, 3vw, 20px);
+  }
 }
 
 @media (max-width: 480px) {
   .title {
-    font-size: 28px;
+    font-size: clamp(24px, 7vw, 28px);
   }
 
   .mainLink {
     font-size: 16px;
+  }
+  
+  .emptyMessage {
+    font-size: clamp(14px, 4vw, 16px);
+  }
+  
+  .continueButton {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  
+  .cartItems {
+    gap: clamp(12px, 3vw, 16px);
+  }
+
+  .cartContent {
+    gap: clamp(16px, 4vw, 24px);
+    margin-top: 20px;
   }
 }
