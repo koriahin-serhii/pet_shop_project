@@ -19,7 +19,9 @@ export const fetchProductById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await productsAPI.getById(id)
-      return response.data
+      // API возвращает массив с одним элементом, берем первый элемент
+      const product = Array.isArray(response.data) ? response.data[0] : response.data
+      return product
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Failed to fetch product')
     }

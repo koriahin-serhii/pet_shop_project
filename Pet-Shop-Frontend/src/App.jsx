@@ -25,10 +25,7 @@ function App() {
             path={`${ROUTES.CATEGORIES}/:categoryID`}
             element={<CategoryProductsPage />}
           />
-          <Route
-            path={`${ROUTES.PRODUCTS}/:productID`}
-            element={<ProductPage />}
-          />
+          <Route path={ROUTES.PRODUCT} element={<ProductPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>

@@ -10,12 +10,20 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action) {
-      const existingItem = state.items.find(item => item.id === action.payload.id);
+      const { productId, quantity = 1 } = action.payload;
+      const existingItem = state.items.find(item => item.id === productId);
+      
       if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity += quantity;
       } else {
-        state.items.push({ ...action.payload, quantity: 1 });
+        // Если товара нет в корзине, добавляем его с переданным количеством
+        state.items.push({ 
+          id: productId, 
+          quantity: quantity,
+          // Здесь можно добавить другие поля товара если нужно
+        });
       }
+      
       state.totalCount = state.items.reduce((total, item) => total + item.quantity, 0);
     },
     removeFromCart(state, action) {
@@ -41,5 +49,11 @@ const cartSlice = createSlice({
 });
 
 export const { addToCart, removeFromCart, updateQuantity, clearCart } = cartSlice.actions;
+
+// Селекторы
+export const selectCartItems = (state) => state.cart.items;
+export const selectCartTotalCount = (state) => state.cart.totalCount;
+export const selectCartItemById = (id) => (state) => 
+  state.cart.items.find(item => item.id === id);
 
 export default cartSlice.reducer;
