@@ -36,12 +36,13 @@ const ShoppingCartPage = () => {
 
   const handleOrderSuccess = () => {
     setIsModalOpen(true)
-    // Очищаем корзину после успешного заказа
-    dispatch(clearCart())
+    // НЕ очищаем корзину сразу - оставляем товары на заднем фоне
   }
 
   const handleModalClose = () => {
     setIsModalOpen(false)
+    // Очищаем корзину только при закрытии модального окна
+    dispatch(clearCart())
   }
 
   const handleGoHome = () => {
