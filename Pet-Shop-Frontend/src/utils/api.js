@@ -1,25 +1,25 @@
 import axios from 'axios'
 
-// Базовая конфигурация API
+// Base API configuration
 const API_BASE_URL = 'http://localhost:3333'
 
-// Утилита для создания полного URL изображения
+// Utility to create full image URL
 export const getImageUrl = (imagePath) => {
   if (!imagePath) return ''
   if (imagePath.startsWith('http')) return imagePath
   return `${API_BASE_URL}${imagePath}`
 }
 
-// Создаем экземпляр axios с базовой конфигурацией
+// Create axios instance with base configuration
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 10000, // 10 секунд
+  timeout: 10000, // 10 seconds
   headers: {
     'Content-Type': 'application/json',
   },
 })
 
-// Interceptor для обработки ответов
+// Interceptor for response processing
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -28,30 +28,30 @@ api.interceptors.response.use(
   }
 )
 
-// API методы для категорий
+// API methods for categories
 export const categoriesAPI = {
-  // Получить все категории
+  // Get all categories
   getAll: () => api.get('/categories/all'),
   
-  // Получить категорию по ID
+  // Get category by ID
   getById: (id) => api.get(`/categories/${id}`),
 }
 
-// API методы для товаров
+// API methods for products
 export const productsAPI = {
   // Получить все товары
   getAll: () => api.get('/products/all'),
   
-  // Получить товар по ID
+  // Get product by ID
   getById: (id) => api.get(`/products/${id}`),
   
-  // Получить товары по категории
+  // Get products by category
   getByCategory: (categoryId) => api.get(`/categories/${categoryId}`),
   
-  // Получить товары со скидкой (фильтруем все товары)
+  // Get discounted products (filter all products)
   getSales: async () => {
     const response = await api.get('/products/all')
-    // Фильтруем товары, у которых есть discont_price
+    // Filter products that have discont_price
     const saleProducts = response.data.filter(product => 
       product.discont_price !== null && 
       product.discont_price !== undefined && 

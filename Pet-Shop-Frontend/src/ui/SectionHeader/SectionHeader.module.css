@@ -67,12 +67,6 @@
     font-size: 52px;
   }
   
-  .decorativeLine {
-    min-width: 80px;
-  }
-}
-
-@media (max-width: 1200px) {
   .linkContainer {
     flex: 1 1 auto;
     width: 100%;

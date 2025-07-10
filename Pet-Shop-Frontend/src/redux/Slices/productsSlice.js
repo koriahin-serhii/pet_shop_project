@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { productsAPI } from '../../utils/api'
 
-// Async thunks для загрузки товаров
+// Async thunks for loading products
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (_, { rejectWithValue }) => {
@@ -19,7 +19,7 @@ export const fetchProductById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await productsAPI.getById(id)
-      // API возвращает массив с одним элементом, берем первый элемент
+      // API returns array with one element, take the first element
       const product = Array.isArray(response.data) ? response.data[0] : response.data
       return product
     } catch (error) {
@@ -33,7 +33,7 @@ export const fetchProductsByCategory = createAsyncThunk(
   async (categoryId, { rejectWithValue }) => {
     try {
       const response = await productsAPI.getByCategory(categoryId)
-      // API возвращает объект с полями category и data
+      // API returns object with category and data fields
       return {
         category: response.data.category,
         products: response.data.data || []
@@ -144,7 +144,7 @@ const productsSlice = createSlice({
 
 export const { clearError, clearCurrentProduct, clearCategoryProducts } = productsSlice.actions
 
-// Селекторы
+// Selectors
 export const selectProducts = (state) => state.products.items
 export const selectCurrentProduct = (state) => state.products.currentProduct
 export const selectCategoryProducts = (state) => state.products.categoryProducts

@@ -56,7 +56,7 @@ const ProductDetails = ({
 
   return (
     <div className={styles.productDetails}>
-      {/* Изображение товара */}
+      {/* Product image */}
       <div className={styles.imageContainer}>
         <img
           src={getImageUrl(product.image)}
@@ -68,11 +68,11 @@ const ProductDetails = ({
         />
       </div>
 
-      {/* Детали товара */}
+      {/* Product details */}
       <div className={styles.detailsContainer}>
         <h1 className={styles.productTitle}>{product.title}</h1>
 
-        {/* Цены и скидка */}
+        {/* Prices and discount */}
         <div className={styles.priceContainer}>
           <span className={styles.currentPrice}>${currentPrice}</span>
           {hasDiscount && (
@@ -83,7 +83,7 @@ const ProductDetails = ({
           )}
         </div>
 
-        {/* Счетчик и добавление в корзину */}
+        {/* Counter and add to cart */}
         <div className={styles.counterSection}>
           <Counter
             value={quantity}
@@ -100,7 +100,7 @@ const ProductDetails = ({
           </CustomButton>
         </div>
 
-        {/* Описание */}
+        {/* Description */}
         {description && (
           <div className={styles.descriptionSection}>
             <h2 className={styles.descriptionTitle}>Description</h2>

@@ -16,11 +16,11 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity += quantity;
       } else {
-        // Если товара нет в корзине, добавляем его с переданным количеством и данными
+        // If product is not in cart, add it with passed quantity and data
         state.items.push({ 
           id: productId, 
           quantity: quantity,
-          productData: productData || null, // Сохраняем данные о товаре
+          productData: productData || null, // Save product data
         });
       }
       
@@ -50,19 +50,19 @@ const cartSlice = createSlice({
 
 export const { addToCart, removeFromCart, updateQuantity, clearCart } = cartSlice.actions;
 
-// Селекторы
+// Selectors
 export const selectCartItems = (state) => state.cart.items;
 export const selectCartTotalCount = (state) => state.cart.totalCount;
 export const selectCartItemById = (id) => (state) => 
   state.cart.items.find(item => item.id === id);
 
-// Селектор для расчета общей суммы корзины
+// Selector for calculating total cart amount
 export const selectCartTotal = (state) => {
   return state.cart.items.reduce((total, item) => {
     const productData = item.productData;
     if (!productData) return total;
     
-    // Если есть скидка, используем цену со скидкой
+    // If there's a discount, use discounted price
     const price = productData.discont_price || productData.price;
     return total + (price * item.quantity);
   }, 0);

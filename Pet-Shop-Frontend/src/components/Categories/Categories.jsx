@@ -20,7 +20,7 @@ const Categories = ({ showAll = false, limit = 4 }) => {
   const initialized = useSelector(selectCategoriesInitialized)
 
   useEffect(() => {
-    // Загружаем категории только если они еще не были загружены
+    // Load categories only if they haven't been loaded yet
     if (!initialized) {
       dispatch(fetchCategories())
     }

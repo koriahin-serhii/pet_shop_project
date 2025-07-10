@@ -20,7 +20,7 @@ const AllSalesPage = () => {
     dispatch(fetchSaleProducts())
   }, [dispatch])
 
-  // Обновляем отфильтрованные товары при загрузке
+  // Update filtered products when loading
   useEffect(() => {
     setFilteredProducts(saleProducts)
   }, [saleProducts])
@@ -56,7 +56,7 @@ const AllSalesPage = () => {
       <div className={styles.container}>
         <h1>Discounted items</h1>
         
-        {/* Компонент сортировки и фильтрации (без чекбокса скидок) */}
+        {/* Sorting and filtering component (without discount checkbox) */}
         {saleProducts.length > 0 && (
           <SortingComponent
             products={saleProducts}

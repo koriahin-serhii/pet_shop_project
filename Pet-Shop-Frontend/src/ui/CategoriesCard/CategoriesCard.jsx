@@ -26,7 +26,7 @@ const CategoriesCard = ({
     </div>
   )
 
-  // Если передан prop "to", оборачиваем в Link
+  // If "to" prop is passed, wrap in Link
   if (to) {
     return (
       <Link to={to} className={styles.link}>
@@ -35,7 +35,7 @@ const CategoriesCard = ({
     )
   }
 
-  // Если передан onClick, оборачиваем в div с обработчиком
+  // If onClick is passed, wrap in div with handler
   if (onClick) {
     return (
       <div 
@@ -54,7 +54,7 @@ const CategoriesCard = ({
     )
   }
 
-  // Обычная карточка без интерактивности
+  // Regular card without interactivity
   return content
 }
 

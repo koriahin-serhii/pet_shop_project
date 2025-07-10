@@ -10,7 +10,7 @@ const Header = () => {
   const cartCount = useSelector(state => state.cart.totalCount)
   const location = useLocation()
 
-  // Функция для определения активной ссылки
+  // Function to determine active link
   const isActiveLink = (path) => {
     if (path === ROUTES.MAIN) {
       return location.pathname === path

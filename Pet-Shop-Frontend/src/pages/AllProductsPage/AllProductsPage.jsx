@@ -20,7 +20,7 @@ const AllProductsPage = () => {
     dispatch(fetchProducts())
   }, [dispatch])
 
-  // Обновляем отфильтрованные товары при загрузке
+  // Update filtered products when loading
   useEffect(() => {
     setFilteredProducts(products)
   }, [products])
@@ -55,8 +55,8 @@ const AllProductsPage = () => {
     <div className={styles.allProductsPage}>
       <div className={styles.container}>
         <h1>All Products</h1>
-        
-        {/* Компонент сортировки и фильтрации */}
+
+        {/* Sorting and filtering component */}
         {products.length > 0 && (
           <SortingComponent
             products={products}

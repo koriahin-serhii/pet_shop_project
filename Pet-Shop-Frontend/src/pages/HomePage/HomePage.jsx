@@ -6,8 +6,7 @@ import styles from './HomePage.module.css'
 
 const HomePage = () => {
   const handleDiscountSuccess = () => {
-    // Можно добавить логику для показа уведомления об успехе
-    console.log('Discount request sent successfully!')
+    // Can add logic to show success notification
   }
 
   return (

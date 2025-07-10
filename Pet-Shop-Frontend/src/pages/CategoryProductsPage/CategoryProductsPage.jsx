@@ -22,14 +22,12 @@ const CategoryProductsPage = () => {
 
   useEffect(() => {
     if (categoryID) {
-      console.log('Fetching products for category ID:', categoryID)
       dispatch(fetchProductsByCategory(categoryID))
     }
   }, [dispatch, categoryID])
 
-  // Обновляем отфильтрованные товары при загрузке
+  // Update filtered products when loading
   useEffect(() => {
-    console.log('Category products updated:', categoryProducts)
     setFilteredProducts(categoryProducts)
   }, [categoryProducts])
 
@@ -64,7 +62,7 @@ const CategoryProductsPage = () => {
       <div className={styles.container}>
         <h1>{currentCategory?.title || 'Category Products'}</h1>
         
-        {/* Компонент сортировки и фильтрации */}
+        {/* Sorting and filtering component */}
         {categoryProducts.length > 0 && (
           <SortingComponent
             products={categoryProducts}

@@ -148,7 +148,7 @@
   padding: 20px;
 }
 
-/* Адаптивность */
+/* Responsive design */
 @media (max-width: 1024px) {
 
   .counterSection {

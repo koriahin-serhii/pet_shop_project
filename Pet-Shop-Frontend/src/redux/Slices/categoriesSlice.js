@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { categoriesAPI } from '../../utils/api'
 
-// Fallback данные для демонстрации
+// Fallback data for demonstration
 const fallbackCategories = [
   {
     id: 1,
@@ -45,7 +45,7 @@ const fallbackCategories = [
   }
 ]
 
-// Async thunk для загрузки категорий
+// Async thunk for loading categories
 export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',
   async () => {
@@ -53,8 +53,7 @@ export const fetchCategories = createAsyncThunk(
       const response = await categoriesAPI.getAll()
       return response.data
     } catch {
-      console.log('Server not available, using fallback data')
-      // Возвращаем fallback данные вместо ошибки
+      // Return fallback data instead of error
       return fallbackCategories
     }
   }
@@ -88,7 +87,7 @@ const categoriesSlice = createSlice({
       .addCase(fetchCategories.rejected, (state, action) => {
         state.loading = false
         state.error = action.payload || 'Failed to load categories'
-        // Используем fallback данные даже при ошибке
+        // Use fallback data even on error
         state.items = fallbackCategories
         state.initialized = true
       })
@@ -97,7 +96,7 @@ const categoriesSlice = createSlice({
 
 export const { clearError } = categoriesSlice.actions
 
-// Селекторы
+// Selectors
 export const selectCategories = (state) => state.categories.items
 export const selectCategoriesLoading = (state) => state.categories.loading
 export const selectCategoriesError = (state) => state.categories.error

@@ -28,14 +28,14 @@ const ProductPage = () => {
     dispatch(addToCart({ 
       productId, 
       quantity, 
-      productData: product // Передаем данные о товаре
+      productData: product // Pass product data
     }))
     
-    // Показываем улучшенное уведомление
+    // Show improved notification
     const productName = product?.title || `Product ${productId}`
     const message = `✅ ${productName} (${quantity} item${quantity > 1 ? 's' : ''}) added to cart!`
     
-    // Временно используем alert, но можно заменить на toast-уведомление
+    // Temporarily use alert, but can be replaced with toast notification
     alert(message)
   }
 

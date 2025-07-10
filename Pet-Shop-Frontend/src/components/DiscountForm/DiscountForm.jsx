@@ -25,26 +25,26 @@ const DiscountForm = ({ onDiscountSuccess }) => {
         email: data.email
       }
 
-      // Отправляем заявку на купон на сервер
+      // Send coupon request to server
       await axios.post('http://localhost:3333/sale/send', discountData)
       
-      // Очищаем форму
+      // Clear form
       reset()
       setIsSubmitted(true)
       
-      // Вызываем callback при успехе (если нужно)
+      // Call success callback (if needed)
       if (onDiscountSuccess) {
         onDiscountSuccess()
       }
 
-      // Показываем сообщение об успехе на 3 секунды
+      // Show success message for 3 seconds
       setTimeout(() => {
         setIsSubmitted(false)
       }, 3000)
       
     } catch (error) {
       console.error('Error sending discount request:', error)
-      alert('Ошибка при отправке заявки. Попробуйте еще раз.')
+      alert('Error sending request. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -57,7 +57,7 @@ const DiscountForm = ({ onDiscountSuccess }) => {
       <div className={styles.content}>
         <div className={styles.imageSection}>
           <div className={styles.animalsImage}>
-            {/* Здесь будет изображение с животными */}
+            {/* Here will be an image with animals */}
           </div>
         </div>
 

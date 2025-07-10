@@ -32,7 +32,7 @@ const CartItem = ({ item, className = '' }) => {
 
   return (
     <div className={`${styles.cartItem} ${className}`}>
-      {/* Изображение товара */}
+      {/* Product image */}
       <div className={styles.imageContainer}>
         <img
           src={getImageUrl(image)}
@@ -45,11 +45,11 @@ const CartItem = ({ item, className = '' }) => {
         />
       </div>
 
-      {/* Информация о товаре */}
+      {/* Product information */}
       <div className={styles.productInfo}>
         <h3 className={styles.productTitle}>{title}</h3>
 
-        {/* Счетчик количества */}
+        {/* Quantity counter */}
         <div className={styles.counterContainer}>
           <Counter
             value={quantity}
@@ -58,7 +58,7 @@ const CartItem = ({ item, className = '' }) => {
             max={99}
             className={styles.counter}
           />
-          {/* Цена */}
+          {/* Price */}
           <div className={styles.priceContainer}>
             <div className={styles.currentPrice}>${currentPrice}</div>
             {hasDiscount && (
@@ -68,7 +68,7 @@ const CartItem = ({ item, className = '' }) => {
         </div>
       </div>
 
-      {/* Кнопка удаления */}
+      {/* Remove button */}
       <button
         className={styles.removeButton}
         onClick={handleRemove}

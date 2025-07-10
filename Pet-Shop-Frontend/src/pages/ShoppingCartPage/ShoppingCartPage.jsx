@@ -22,7 +22,7 @@ const ShoppingCartPage = () => {
   const totalCount = useSelector(selectCartTotalCount)
   const products = useSelector(selectProducts)
 
-  // Получаем полные данные о товарах в корзине
+  // Get full data for products in cart
   const cartItemsWithData = cartItems
     .map((item) => {
       const productData =
@@ -32,16 +32,16 @@ const ShoppingCartPage = () => {
         productData,
       }
     })
-    .filter((item) => item.productData) // Убираем товары без данных
+    .filter((item) => item.productData) // Remove items without data
 
   const handleOrderSuccess = () => {
     setIsModalOpen(true)
-    // НЕ очищаем корзину сразу - оставляем товары на заднем фоне
+    // DO NOT clear cart immediately - keep items in background
   }
 
   const handleModalClose = () => {
     setIsModalOpen(false)
-    // Очищаем корзину только при закрытии модального окна
+    // Clear cart only when closing modal
     dispatch(clearCart())
   }
 
@@ -58,7 +58,7 @@ const ShoppingCartPage = () => {
           linkTo={ROUTES.MAIN}
         />
 
-        {/* Если корзина пуста */}
+        {/* If cart is empty */}
         {totalCount === 0 ? (
           <div className={styles.emptyCart}>
             <p className={styles.emptyMessage}>
@@ -72,7 +72,7 @@ const ShoppingCartPage = () => {
             </CustomButton>
           </div>
         ) : (
-          /* Если в корзине есть товары */
+          /* If cart has items */
           <div className={styles.cartContent}>
             <div className={styles.cartItems}>
               {cartItemsWithData.map((item) => (
