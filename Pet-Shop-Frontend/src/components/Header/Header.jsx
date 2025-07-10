@@ -55,7 +55,7 @@ const Header = () => {
         </nav>
 
         {/* Cart */}
-        <Link to={ROUTES.SHOPPING} className={styles.cart}>
+        <Link to={ROUTES.SHOPPING_CART} className={styles.cart}>
           <img src={basketIcon} alt="Shopping Cart" className={styles.cartIcon} />
           {cartCount > 0 && (
             <span className={styles.cartCount}>{cartCount}</span>
