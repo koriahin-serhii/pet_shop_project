@@ -8,7 +8,7 @@ import styles from './CartItem.module.css'
 
 const CartItem = ({ item, className = '' }) => {
   const dispatch = useDispatch()
-  
+
   if (!item || !item.productData) {
     return (
       <div className={styles.cartItem}>
@@ -19,7 +19,7 @@ const CartItem = ({ item, className = '' }) => {
 
   const { productData, quantity, id } = item
   const { title, price, discont_price, image } = productData
-  
+
   const hasDiscount = discont_price !== null && discont_price < price
   const currentPrice = hasDiscount ? discont_price : price
 

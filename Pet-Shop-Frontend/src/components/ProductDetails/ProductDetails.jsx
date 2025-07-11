@@ -4,50 +4,42 @@ import { getImageUrl } from '../../utils/api'
 import { getReliablePlaceholder } from '../../utils/placeholder'
 import styles from './ProductDetails.module.css'
 
-const ProductDetails = ({ 
+const ProductDetails = ({
   product,
   loading = false,
   error = null,
-  onAddToCart
+  onAddToCart,
 }) => {
   const [showFullDescription, setShowFullDescription] = useState(false)
   const [quantity, setQuantity] = useState(1)
 
   if (loading) {
-    return (
-      <div className={styles.loading}>
-        Loading product details...
-      </div>
-    )
+    return <div className={styles.loading}>Loading product details...</div>
   }
 
   if (error) {
-    return (
-      <div className={styles.error}>
-        Error: {error}
-      </div>
-    )
+    return <div className={styles.error}>Error: {error}</div>
   }
 
   if (!product) {
-    return (
-      <div className={styles.error}>
-        Product not found
-      </div>
-    )
+    return <div className={styles.error}>Product not found</div>
   }
 
-  const hasDiscount = product.discont_price !== null && product.discont_price < product.price
-  const discountPercentage = hasDiscount 
-    ? Math.round(((product.price - product.discont_price) / product.price) * 100)
+  const hasDiscount =
+    product.discont_price !== null && product.discont_price < product.price
+  const discountPercentage = hasDiscount
+    ? Math.round(
+        ((product.price - product.discont_price) / product.price) * 100
+      )
     : 0
 
   const currentPrice = hasDiscount ? product.discont_price : product.price
   const description = product.description || ''
   const isLongDescription = description.length > 300
-  const displayDescription = showFullDescription || !isLongDescription 
-    ? description 
-    : description.substring(0, 300) + '...'
+  const displayDescription =
+    showFullDescription || !isLongDescription
+      ? description
+      : description.substring(0, 300) + '...'
 
   const handleAddToCart = () => {
     if (onAddToCart) {
@@ -79,19 +71,16 @@ const ProductDetails = ({
           {hasDiscount && (
             <>
               <span className={styles.originalPrice}>${product.price}</span>
-              <span className={styles.discountBadge}>-{discountPercentage}%</span>
+              <span className={styles.discountBadge}>
+                -{discountPercentage}%
+              </span>
             </>
           )}
         </div>
 
         {/* Counter and add to cart */}
         <div className={styles.counterSection}>
-          <Counter
-            value={quantity}
-            onChange={setQuantity}
-            min={1}
-            max={99}
-          />
+          <Counter value={quantity} onChange={setQuantity} min={1} max={99} />
           <CustomButton
             onClick={handleAddToCart}
             fullWidth={true}
@@ -105,9 +94,7 @@ const ProductDetails = ({
         {description && (
           <div className={styles.descriptionSection}>
             <h2 className={styles.descriptionTitle}>Description</h2>
-            <p className={styles.description}>
-              {displayDescription}
-            </p>
+            <p className={styles.description}>{displayDescription}</p>
             {isLongDescription && (
               <button
                 className={styles.readMore}

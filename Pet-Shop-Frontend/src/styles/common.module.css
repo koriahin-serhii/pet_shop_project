@@ -1,0 +1,92 @@
+/* Common container styles */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Common page styles */
+.page {
+  padding: 40px 0;
+}
+
+.pageReduced {
+  padding: 20px 0;
+}
+
+/* Common title styles */
+.pageTitle {
+  font-size: 64px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: flex-start;
+}
+
+/* Common loading and error states */
+.loading,
+.error {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 18px;
+}
+
+.loading {
+  color: #666;
+}
+
+.error {
+  color: #d63384;
+}
+
+.loadingReduced,
+.errorReduced {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 18px;
+}
+
+.loadingReduced {
+  color: #666;
+}
+
+.errorReduced {
+  color: #d63384;
+}
+
+/* Common grid styles */
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.productsGridCompact {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Responsive design for common elements */
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 36px;
+  }
+
+  .productsGrid,
+  .productsGridCompact {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .pageTitle {
+    font-size: 28px;
+  }
+
+  .productsGrid,
+  .productsGridCompact {
+    grid-template-columns: 1fr;
+  }
+}

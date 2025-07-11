@@ -6,14 +6,14 @@ import { addToCart, selectCartItemById } from '../../redux/Slices/cartSlice'
 import ButtonAdd from '../ButtonAdd/ButtonAdd'
 import styles from './ProductCard.module.css'
 
-const ProductCard = ({ 
-  id, 
-  title, 
-  price, 
-  discont_price, 
-  image, 
+const ProductCard = ({
+  id,
+  title,
+  price,
+  discont_price,
+  image,
   className,
-  onClick 
+  onClick,
 }) => {
   const dispatch = useDispatch()
   const cartItem = useSelector(selectCartItemById(id))
@@ -26,33 +26,36 @@ const ProductCard = ({
   }
 
   const discountPercent = calculateDiscountPercent()
-  
+
   // Handle image URL
   const getImageSrc = () => {
-    if (!image) return 'https://placehold.co/300x200/F5F5F5/999999?text=No+Image'
+    if (!image)
+      return 'https://placehold.co/300x200/F5F5F5/999999?text=No+Image'
     if (image.startsWith('http')) return image // If already full URL
     return getImageUrl(image) // Otherwise use API utility
   }
-  
+
   const imageUrl = getImageSrc()
 
   // Handle add to cart
   const handleAddToCart = (e) => {
     e.preventDefault() // Prevent navigation when clicking button
     e.stopPropagation()
-    
+
     if (!isInCart) {
-      dispatch(addToCart({ 
-        productId: id, 
-        quantity: 1,
-        productData: {
-          id,
-          title,
-          price,
-          discont_price,
-          image
-        }
-      }))
+      dispatch(
+        addToCart({
+          productId: id,
+          quantity: 1,
+          productData: {
+            id,
+            title,
+            price,
+            discont_price,
+            image,
+          },
+        })
+      )
     }
   }
 
@@ -60,23 +63,22 @@ const ProductCard = ({
     <div className={`${styles.card} ${className || ''}`}>
       {/* Discount badge */}
       {discountPercent && (
-        <div className={styles.discountBadge}>
-          -{discountPercent}%
-        </div>
+        <div className={styles.discountBadge}>-{discountPercent}%</div>
       )}
-      
+
       {/* Product image */}
       <div className={styles.imageContainer}>
-        <img 
-          src={imageUrl} 
-          alt={title} 
+        <img
+          src={imageUrl}
+          alt={title}
           className={styles.image}
           onError={(e) => {
-            e.target.src = 'https://placehold.co/300x200/F5F5F5/999999?text=No+Image'
+            e.target.src =
+              'https://placehold.co/300x200/F5F5F5/999999?text=No+Image'
           }}
         />
         {/* Add to cart button - appears on hover */}
-        <div 
+        <div
           className={styles.addToCartContainer}
           onClick={(e) => {
             e.preventDefault()
@@ -90,11 +92,11 @@ const ProductCard = ({
           />
         </div>
       </div>
-      
+
       {/* Product information */}
       <div className={styles.info}>
         <h3 className={styles.title}>{title}</h3>
-        
+
         {/* Prices */}
         <div className={styles.priceContainer}>
           {discont_price ? (

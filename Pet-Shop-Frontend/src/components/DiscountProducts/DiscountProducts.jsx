@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ProductCard, SectionHeader } from '../../ui'
 import { ROUTES } from '../../utils/routes'
 import { getReliablePlaceholder } from '../../utils/placeholder'
-import { 
-  fetchSaleProducts, 
-  selectSaleProducts, 
-  selectProductsLoading, 
-  selectProductsError 
+import {
+  fetchSaleProducts,
+  selectSaleProducts,
+  selectProductsLoading,
+  selectProductsError,
 } from '../../redux/Slices/productsSlice'
 import styles from './DiscountProducts.module.css'
 
@@ -24,29 +24,29 @@ const DiscountProducts = ({ limit = 4 }) => {
       title: 'Dry Dog Food for Adult Dogs',
       price: 100,
       discont_price: 80,
-      image: getReliablePlaceholder(300, 200, 'Dog Food')
+      image: getReliablePlaceholder(300, 200, 'Dog Food'),
     },
     {
       id: 'demo-2',
       title: 'Ultra Cat Litter Tray Self-Cleaning',
       price: 600,
       discont_price: 450,
-      image: getReliablePlaceholder(300, 200, 'Cat Litter')
+      image: getReliablePlaceholder(300, 200, 'Cat Litter'),
     },
     {
       id: 'demo-3',
       title: 'Black Dog Bed, Large Size',
       price: 150,
       discont_price: 50,
-      image: getReliablePlaceholder(300, 200, 'Dog Bed')
+      image: getReliablePlaceholder(300, 200, 'Dog Bed'),
     },
     {
       id: 'demo-4',
       title: 'Cat Toy with Real Random Movement',
       price: 50,
       discont_price: 25,
-      image: getReliablePlaceholder(300, 200, 'Cat Toy')
-    }
+      image: getReliablePlaceholder(300, 200, 'Cat Toy'),
+    },
   ]
 
   useEffect(() => {
@@ -61,7 +61,8 @@ const DiscountProducts = ({ limit = 4 }) => {
   }
 
   // Используем данные из Redux или fallback данные
-  const productsToShow = saleProducts.length > 0 ? saleProducts : fallbackProducts
+  const productsToShow =
+    saleProducts.length > 0 ? saleProducts : fallbackProducts
   const displayedProducts = getRandomProducts(productsToShow, limit)
 
   if (loading) {
@@ -80,7 +81,9 @@ const DiscountProducts = ({ limit = 4 }) => {
       <section className={styles.discountProductsSection}>
         <div className={styles.container}>
           <SectionHeader title="Sale" />
-          <div className={styles.error}>Error loading sale products: {error}</div>
+          <div className={styles.error}>
+            Error loading sale products: {error}
+          </div>
         </div>
       </section>
     )
@@ -100,14 +103,14 @@ const DiscountProducts = ({ limit = 4 }) => {
   return (
     <section className={styles.discountProductsSection}>
       <div className={styles.container}>
-        <SectionHeader 
-          title="Sale" 
+        <SectionHeader
+          title="Sale"
           linkText="All sales"
           linkTo={ROUTES.ALL_SALES}
         />
-        
+
         <div className={styles.productsGrid}>
-          {displayedProducts.map(product => (
+          {displayedProducts.map((product) => (
             <ProductCard
               key={product.id}
               id={product.id}
