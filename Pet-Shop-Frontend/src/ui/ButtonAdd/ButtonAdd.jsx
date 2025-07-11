@@ -8,9 +8,12 @@ const ButtonAdd = ({
   className = '',
   children = 'Add to cart'
 }) => {
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    
     if (!disabled && !isAdded && onClick) {
-      onClick()
+      onClick(e)
     }
   }
 

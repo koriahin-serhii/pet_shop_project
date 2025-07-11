@@ -1,5 +1,6 @@
 import './App.css'
 import Layout from './components/Layout/Layout'
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import { Routes, Route } from 'react-router-dom'
 import { ROUTES } from './utils/routes'
 import HomePage from './pages/HomePage/HomePage'
@@ -15,6 +16,7 @@ function App() {
   return (
     <div>
       <Layout>
+        <ScrollToTop />
         <Routes>
           <Route path={ROUTES.MAIN} element={<HomePage />} />
           <Route path={ROUTES.CATEGORIES} element={<CategoriesPage />} />

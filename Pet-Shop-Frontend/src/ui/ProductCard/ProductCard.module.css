@@ -27,7 +27,7 @@
   border-color: #e0e0e0;
 }
 
-/* Метка скидки */
+/* Discount badge */
 .discountBadge {
   position: absolute;
   top: 8px;
@@ -42,7 +42,7 @@
   box-shadow: 0 2px 4px rgba(13, 80, 255, 0.3);
 }
 
-/* Контейнер изображения */
+/* Image container */
 .imageContainer {
   position: relative;
   width: 100%;
@@ -52,8 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-    border: 1px solid #f0f0f0;
-
+  border: 1px solid #f0f0f0;
 }
 
 .image {
@@ -62,8 +61,54 @@
   object-fit: cover;
 }
 
+/* Add to cart button container */
+.addToCartContainer {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 3;
+  pointer-events: none;
+}
 
-/* Информация о товаре */
+/* Show button on card hover */
+.card:hover .addToCartContainer {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Add to cart button styling */
+.addToCartButton {
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 8px;
+  max-width: none;
+}
+
+/* Ensure image container has proper stacking */
+.imageContainer::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.card:hover .imageContainer::before {
+  opacity: 1;
+}
+
+/* Product information */
 .info {
   padding: 16px 32px;
   flex: 1;
@@ -86,7 +131,7 @@
   min-height: 44px;
 }
 
-/* Контейнер цен */
+/* Price container */
 .priceContainer {
   display: flex;
   align-items: flex-end;
@@ -94,21 +139,21 @@
   margin-top: auto;
 }
 
-/* Обычная цена (без скидки) */
+/* Regular price (without discount) */
 .price {
   font-size: 40px;
   font-weight: 600;
   color: #333;
 }
 
-/* Цена со скидкой */
+/* Discounted price */
 .discountPrice {
   font-size: 40px;
   font-weight: 600;
   color: #333;
 }
 
-/* Зачеркнутая цена */
+/* Strikethrough price */
 .originalPrice {
   font-size: 16px;
   font-weight: 500;
@@ -117,7 +162,7 @@
 
 }
 
-/* Адаптивность */
+/* Responsive design */
 @media (max-width: 768px) {
   .imageContainer {
     height: 180px;
@@ -145,6 +190,17 @@
     font-size: 11px;
     padding: 3px 6px;
   }
+  
+  .addToCartButton {
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .addToCartContainer {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -168,5 +224,16 @@
   
   .originalPrice {
     font-size: 13px;
+  }
+  
+  .addToCartButton {
+    height: 36px;
+    font-size: 13px;
+  }
+  
+  .addToCartContainer {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
   }
 }
