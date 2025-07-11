@@ -29,7 +29,7 @@ const ProductCard = ({
   
   // Handle image URL
   const getImageSrc = () => {
-    if (!image) return 'https://via.placeholder.com/300x200/F5F5F5/999999?text=No+Image'
+    if (!image) return 'https://placehold.co/300x200/F5F5F5/999999?text=No+Image'
     if (image.startsWith('http')) return image // If already full URL
     return getImageUrl(image) // Otherwise use API utility
   }
@@ -72,7 +72,7 @@ const ProductCard = ({
           alt={title} 
           className={styles.image}
           onError={(e) => {
-            e.target.src = 'https://via.placeholder.com/300x200/F5F5F5/999999?text=No+Image'
+            e.target.src = 'https://placehold.co/300x200/F5F5F5/999999?text=No+Image'
           }}
         />
         {/* Add to cart button - appears on hover */}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Counter, CustomButton } from '../../ui'
 import { getImageUrl } from '../../utils/api'
+import { getReliablePlaceholder } from '../../utils/placeholder'
 import styles from './ProductDetails.module.css'
 
 const ProductDetails = ({ 
@@ -63,7 +64,7 @@ const ProductDetails = ({
           alt={product.title}
           className={styles.productImage}
           onError={(e) => {
-            e.target.src = 'https://via.placeholder.com/400x400/F5F5F5/999999?text=No+Image'
+            e.target.src = getReliablePlaceholder(400, 400, 'No Image')
           }}
         />
       </div>

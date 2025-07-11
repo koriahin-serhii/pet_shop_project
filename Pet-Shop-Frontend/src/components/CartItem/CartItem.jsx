@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Counter } from '../../ui'
 import { getImageUrl } from '../../utils/api'
+import { getReliablePlaceholder } from '../../utils/placeholder'
 import { updateQuantity, removeFromCart } from '../../redux/Slices/cartSlice'
 import styles from './CartItem.module.css'
 
@@ -39,8 +40,7 @@ const CartItem = ({ item, className = '' }) => {
           alt={title}
           className={styles.productImage}
           onError={(e) => {
-            e.target.src =
-              'https://via.placeholder.com/150x120/F5F5F5/999999?text=No+Image'
+            e.target.src = getReliablePlaceholder(150, 120, 'No Image')
           }}
         />
       </div>

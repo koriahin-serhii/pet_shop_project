@@ -36,7 +36,7 @@ const Modal = ({ isOpen, onClose, children, hideCloseButton = false }) => {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         {!hideCloseButton && (
-          <button 
+          <button
             className={styles.closeButton}
             onClick={onClose}
             aria-label="Close modal"
@@ -44,9 +44,7 @@ const Modal = ({ isOpen, onClose, children, hideCloseButton = false }) => {
             ×
           </button>
         )}
-        <div className={styles.content}>
-          {children}
-        </div>
+        <div className={styles.content}>{children}</div>
       </div>
     </div>
   )

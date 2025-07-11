@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ProductCard, SectionHeader } from '../../ui'
 import { ROUTES } from '../../utils/routes'
+import { getReliablePlaceholder } from '../../utils/placeholder'
 import { 
   fetchSaleProducts, 
   selectSaleProducts, 
@@ -23,28 +24,28 @@ const DiscountProducts = ({ limit = 4 }) => {
       title: 'Dry Dog Food for Adult Dogs',
       price: 100,
       discont_price: 80,
-      image: 'https://via.placeholder.com/300x200/FF6B6B/FFFFFF?text=Dog+Food'
+      image: getReliablePlaceholder(300, 200, 'Dog Food')
     },
     {
       id: 'demo-2',
       title: 'Ultra Cat Litter Tray Self-Cleaning',
       price: 600,
       discont_price: 450,
-      image: 'https://via.placeholder.com/300x200/4ECDC4/FFFFFF?text=Cat+Litter'
+      image: getReliablePlaceholder(300, 200, 'Cat Litter')
     },
     {
       id: 'demo-3',
       title: 'Black Dog Bed, Large Size',
       price: 150,
       discont_price: 50,
-      image: 'https://via.placeholder.com/300x200/45B7D1/FFFFFF?text=Dog+Bed'
+      image: getReliablePlaceholder(300, 200, 'Dog Bed')
     },
     {
       id: 'demo-4',
       title: 'Cat Toy with Real Random Movement',
       price: 50,
       discont_price: 25,
-      image: 'https://via.placeholder.com/300x200/F7DC6F/333333?text=Cat+Toy'
+      image: getReliablePlaceholder(300, 200, 'Cat Toy')
     }
   ]
 
